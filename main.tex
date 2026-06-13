@@ -43,12 +43,13 @@
 \title{XING: An Agentic Cognitive Infrastructure for Distributed Multimodal Intelligence and Adaptive AI Orchestration}
 
 \author{
-    \IEEEauthorblockN{F.~A.~Mayf$\dagger$}
+    \IEEEauthorblockN{Fernando M. F.$\dagger$}
     \IEEEauthorblockA{$\dagger$Corresponding Author\\
-    Email: famayf@xing-research.org}
+    IPN UPIITA $|$ BUAA\\
+    fmayf1500@alumno.ipn.mx}
     \and
-    \IEEEauthorblockN{XING Research Group\\
-    Institute for Cognitive Infrastructures}
+    \IEEEauthorblockN{NEXUS Research Institute\\
+    Department of Cognitive Infrastructures}
 }
 
 \begin{document}
@@ -116,28 +117,23 @@ The critical limitation across all existing baselines is their complete lack of 
 \caption{Structural Comparison of AI Orchestration Paradigms}
 \label{tab:comparison}
 \centering
-\small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
-\textbf{System} & \textbf{Routing} & \textbf{Memory} & \textbf{Fault Tolerance} & \textbf{Infrastructure}\\
- & & & & \textbf{Awareness}\\
+\textbf{System} & \textbf{Routing} & \textbf{Memory} & \textbf{Fault Tolerance} & \textbf{Infrastructure Awareness}\\
 \midrule
-LangChain & Static & Conversational & Limited & No\\
-\cite{langchain2023} & /Hardcoded & Buffer & (Retries) & \\
+LangChain~\cite{langchain2023} & Static / Hardcoded & Conversational Buffer & Limited (Retries) & No\\
 \addlinespace
-CrewAI & Role-based & Session-based & Minimal & No\\
-\cite{crewai2023} & Heuristics & Cache & & \\
+CrewAI~\cite{crewai2023} & Role-based Heuristics & Session-based Cache & Minimal & No\\
 \addlinespace
-AutoGen & Conversational & Context-Window & Partial & No\\
-\cite{autogen2024} & Loops & Append & (Agent Loops) & \\
+AutoGen~\cite{autogen2024} & Conversational Loops & Context-Window Append & Partial (Agent Loops) & No\\
 \addlinespace
-Semantic Kernel & Embedding & Linear Plugin & Limited & Partial\\
-\cite{semantic_kernel2024} & Matching & Memory & & (Static)\\
+Semantic Kernel~\cite{semantic_kernel2024} & Embedding Matching & Linear Plugin Memory & Limited & Partial (Static)\\
 \addlinespace
-\textbf{XING (Ours)} & \textbf{Adaptive} & \textbf{Semantic} & \textbf{Self-Healing} & \textbf{Native}\\
- & \textbf{Optimization} & \textbf{Graph Fabric} & \textbf{DAGs} & \textbf{Cost/Lat/Energy}\\
+\textbf{XING (Ours)} & \textbf{Adaptive Optimization} & \textbf{Semantic Graph Fabric} & \textbf{Self-Healing DAGs} & \textbf{Native (Cost/Lat/Energy)}\\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 % ====================================================================
@@ -162,7 +158,7 @@ The system is organized into a hierarchical stack comprising five distinct compu
 \begin{figure}[t]
     \centering
     \includegraphics[width=\columnwidth]{figures/fig1_architecture.pdf}
-    \caption{Global Runtime Architecture Topology showing the five-layer hierarchical stack with telemetry feedback loops connecting the Adaptive Routing Engine to the Distributed Runtime Infrastructure.}
+    \caption{Five-layer hierarchical architecture with telemetry feedback loops between the routing engine and distributed infrastructure.}
     \label{fig:architecture}
 \end{figure}
 
@@ -449,8 +445,9 @@ Table~\ref{tab:results_summary} provides a comprehensive quantitative comparison
 \caption{Quantitative Results Summary}
 \label{tab:results_summary}
 \centering
-\small
-\input{figures/results_summary.tex}
+\resizebox{\columnwidth}{!}{%
+\input{figures/results_summary.tex}%
+}
 \end{table}
 
 % ====================================================================
