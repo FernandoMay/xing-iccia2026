@@ -1,0 +1,197 @@
+{
+  "figure1": {
+    "title": "Global Runtime Architecture Topology",
+    "layers": [
+      {
+        "name": "Adaptive Application Layer",
+        "components": [
+          "Multimodal Stream",
+          "User Intent",
+          "Environment"
+        ],
+        "color": "#2c3e50"
+      },
+      {
+        "name": "Agentic Orchestration Kernel",
+        "components": [
+          "DAG Synthesis",
+          "Topological Scheduler",
+          "Self-Healing Engine",
+          "Telemetry Monitor"
+        ],
+        "color": "#2980b9"
+      },
+      {
+        "name": "Adaptive Cognitive Routing Engine",
+        "components": [
+          "Utility Optimizer",
+          "Constraint Evaluator",
+          "Infrastructure Monitor"
+        ],
+        "color": "#27ae60"
+      },
+      {
+        "name": "Semantic Memory Fabric",
+        "components": [
+          "Vector Store",
+          "Knowledge Graph",
+          "Context Decay",
+          "Reinforcement"
+        ],
+        "color": "#8e44ad"
+      },
+      {
+        "name": "Distributed Runtime Infrastructure",
+        "components": [
+          "WebAssembly Sandbox",
+          "gRPC/WebSocket",
+          "Cloud Cluster",
+          "Edge Nodes"
+        ],
+        "color": "#e67e22"
+      }
+    ],
+    "connections": [
+      [
+        "Application",
+        "Kernel"
+      ],
+      [
+        "Kernel",
+        "Routing"
+      ],
+      [
+        "Routing",
+        "Memory"
+      ],
+      [
+        "Memory",
+        "Runtime"
+      ]
+    ]
+  },
+  "figure2": {
+    "title": "Self-Healing DAG Reconfiguration Lifecycle",
+    "states": [
+      {
+        "phase": "t0: Nominal Execution",
+        "nodes": [
+          "N1",
+          "N2",
+          "N3"
+        ],
+        "edges": [
+          [
+            "N1",
+            "N2"
+          ],
+          [
+            "N2",
+            "N3"
+          ]
+        ]
+      },
+      {
+        "phase": "t1: Fault Injection",
+        "failed_node": "N2",
+        "condition": "Semantic Confidence < theta_min",
+        "affected": [
+          "N3"
+        ],
+        "edges": [
+          [
+            "N1",
+            "N2_F"
+          ],
+          [
+            "N2_F",
+            "N3"
+          ]
+        ]
+      },
+      {
+        "phase": "t2: Topological Recovery",
+        "new_nodes": [
+          "N2a",
+          "N2b"
+        ],
+        "recovered_edges": [
+          [
+            "N1",
+            "N2a"
+          ],
+          [
+            "N2a",
+            "N2b"
+          ],
+          [
+            "N2b",
+            "N3"
+          ]
+        ],
+        "formula": "Trace(A^m) = 0 forall m"
+      }
+    ]
+  },
+  "figure3": {
+    "title": "Semantic Memory Fabric Mechanics",
+    "concepts": [
+      {
+        "id": "C1",
+        "label": "Task Goal",
+        "strength": 0.92,
+        "layer": "core"
+      },
+      {
+        "id": "C2",
+        "label": "Multimodal Context",
+        "strength": 0.78,
+        "layer": "active"
+      },
+      {
+        "id": "C3",
+        "label": "Episodic Trace",
+        "strength": 0.45,
+        "layer": "decaying"
+      },
+      {
+        "id": "C4",
+        "label": "Procedural Rule",
+        "strength": 0.88,
+        "layer": "core"
+      },
+      {
+        "id": "C5",
+        "label": "Historical State",
+        "strength": 0.23,
+        "layer": "decaying"
+      }
+    ],
+    "relations": [
+      [
+        "C1",
+        "C2",
+        0.85
+      ],
+      [
+        "C1",
+        "C4",
+        0.72
+      ],
+      [
+        "C2",
+        "C3",
+        0.41
+      ],
+      [
+        "C4",
+        "C5",
+        0.18
+      ]
+    ],
+    "dynamics": {
+      "decay_function": "C(tau) = C0 * exp(-lambda * tau) * sigma(M_sim)",
+      "reinforcement": "Psi_{t+1} = Psi_t + gamma * (R - Psi_t)"
+    }
+  }
+}

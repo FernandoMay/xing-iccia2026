@@ -1,0 +1,142 @@
+=====================================================================
+  REPLICATION NOTE — XING Cognitive Runtime Simulator
+  ICCIA 2026 Experimental Framework
+=====================================================================
+
+Paper Title:
+  XING: An Agentic Cognitive Infrastructure for Distributed
+  Multimodal Intelligence and Adaptive AI Orchestration
+
+Contact:
+  famayf@xing-research.org
+
+=====================================================================
+1. SYSTEM REQUIREMENTS
+=====================================================================
+
+  Hardware:
+    - Any modern CPU (no GPU required)
+    - Minimum 4GB RAM
+    - ~100MB disk space
+
+  Software:
+    - Python 3.8+
+    - pip package manager
+
+=====================================================================
+2. DEPENDENCY INSTALLATION
+=====================================================================
+
+  Run the following command in the project root:
+
+    pip install numpy networkx pandas matplotlib scipy
+
+  The exact versions used in this study were:
+    - numpy==1.24.3
+    - networkx==3.1
+    - pandas==2.0.3
+    - matplotlib==3.7.2
+    - scipy==1.11.1
+
+=====================================================================
+3. RUNNING THE SIMULATION
+=====================================================================
+
+  Basic execution (60 trials, 15 tasks/DAG):
+
+    python xing_simulator.py
+
+  Custom parameters:
+
+    python xing_simulator.py <num_trials> <num_tasks> <constraint_activation_trial>
+
+  Examples:
+    python xing_simulator.py 100 20 50
+    python xing_simulator.py 30 10 15
+    python xing_simulator.py 200 25 100
+
+=====================================================================
+4. OUTPUT FILES
+=====================================================================
+
+  All generated in the project root and figures/ directory:
+
+  Data:
+    xing_experiment_results.csv        - Raw trial-by-trial results
+
+  Figures (IEEE-quality vector PDF):
+    figures/fig5a_rai_comparison.pdf   - RAI comparison chart
+    figures/fig5b_gre_analysis.pdf     - GRE self-healing analysis
+    figures/fig5c_cost_crl_analysis.pdf - Cost and CRL breakdown
+
+  Tables:
+    figures/results_summary.tex        - LaTeX summary table
+
+  Architecture Data:
+    figures/architecture_data.json     - Structured descriptors for
+                                         Figures 1-3 architecture diagrams
+
+=====================================================================
+5. REPRODUCIBILITY GUARANTEE
+=====================================================================
+
+  The simulator is seeded with:
+    RANDOM_SEED = 42
+
+  This ensures identical results across all runs on any platform.
+  The stochastic models use numpy.random with deterministic seeding.
+
+  All random processes (DAG generation, agent failures,
+  context noise, latency jitter) are seeded and reproducible.
+
+=====================================================================
+6. EXPECTED RUNTIME
+=====================================================================
+
+  - 60 trials, 15 tasks: ~30 seconds (single thread)
+  - 100 trials, 20 tasks: ~90 seconds
+  - 200 trials, 25 tasks: ~4 minutes
+
+=====================================================================
+7. INTERPRETING RESULTS
+=====================================================================
+
+  The key findings to verify:
+
+  a) RAI Stability: XING maintains RAI > 0.08 under constraints,
+     while Static Baseline drops below 0.04.
+
+  b) GRE Resilience: XING consistently achieves GRE > 0.75
+     across cascading failures.
+
+  c) Cost Efficiency: Under constraints, XING costs are ~40%
+     lower than Static Baseline.
+
+  d) CRL Preservation: XING maintains CRL < 0.02, indicating
+     coherent context retention across long task chains.
+
+=====================================================================
+8. EXTENDING THE SIMULATOR
+=====================================================================
+
+  To add new agent profiles, modify the agents_pool list in
+  run_experiment().
+
+  To add new baselines, implement a class with an execute(dag, constraints)
+  method following the StaticPipelineBaseline pattern.
+
+  To modify routing weights, pass new alpha/beta/delta/eta values
+  to XingCognitiveRuntime constructor.
+
+=====================================================================
+9. CITATION
+=====================================================================
+
+  If you use this simulator in your research, please cite:
+
+    F. A. Mayf et al., "XING: An Agentic Cognitive Infrastructure
+    for Distributed Multimodal Intelligence and Adaptive AI
+    Orchestration," in Proc. IEEE Int. Conf. Computational
+    Intelligence and Applications (ICCIA), 2026.
+
+=====================================================================
