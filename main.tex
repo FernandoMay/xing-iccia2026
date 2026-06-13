@@ -322,23 +322,24 @@ where $\mathbf{A}_{G'}$ is the adjacency matrix of the reconfigured graph. This 
 \State \textbf{Input:} Graph $G$, Failed Node $v_f$, Context $\mathbf{C}$, Threshold $\theta_{\min}$
 \State \textbf{Output:} Reconfigured Graph $G'$
 \Statex
-\State $V_{\text{desc}} \gets \Call{GetAllDescendants}{G, v_f}$
-\State $\Call{PruneSubgraph}{G, V_{\text{desc}}}$
+\State $V_d \gets$ \Call{GetAllDescendants}{$G$, $v_f$}
+\State \Call{PruneSubgraph}{$G$, $V_d$}
 \Statex
-\State $\mathbf{E}_{\text{err}} \gets \Call{ExtractErrorSignature}{v_f}$
-\State $\mathbf{C}_{\text{aug}} \gets \Call{AppendContext}{\mathbf{C}, \mathbf{E}_{\text{err}}}$
+\State $\mathbf{E}_{err} \gets$ \Call{ExtractErrorSignature}{$v_f$}
+\State $\mathbf{C}_{aug} \gets$ \Call{AppendContext}{$\mathbf{C}$, $\mathbf{E}_{err}$}
 \Statex
-\State $V_{\text{alt}} \gets \Call{SynthesizeAlternativeNodes}{\mathbf{C}_{\text{aug}}, \theta_{\min}}$
+\State $V_a \gets$ \Call{SynthesizeAlternativeNodes}{$\mathbf{C}_{aug}$, $\theta_{\min}$}
 \Statex
-\For{each $n_{\text{alt}} \in V_{\text{alt}}$}
-    \State $G.\Call{InjectNode}{n_{\text{alt}}}$
-    \State $\Call{ReconnectEdges}{G, n_{\text{alt}}, G.\Call{GetSinks}{v_f}}$
+\For{each $n_a \in V_a$}
+    \State \Call{InjectNode}{$G$, $n_a$}
+    \State $S \gets$ \Call{GetSinks}{$G$, $v_f$}
+\State \Call{ReconnectEdges}{$G$, $n_a$, $S$}
 \EndFor
 \Statex
-\If{$\Call{ValidateTopologicalProperties}{G}$}
+\If{\Call{ValidateTopologicalProperties}{$G$}}
     \State \Return $G$
 \Else
-    \State \Return $\Call{FallbackToSafeState}{G}$
+    \State \Return \Call{FallbackToSafeState}{$G$}
 \EndIf
 \EndProcedure
 \end{algorithmic}

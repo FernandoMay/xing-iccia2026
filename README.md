@@ -38,13 +38,21 @@ pip install numpy networkx pandas matplotlib scipy
 python xing_simulator.py
 ```
 
-### 2. Compile the LaTeX paper
+### 2. Compile the LaTeX paper (Windows)
+
+```powershell
+.\compile.ps1
+```
+
+Or manually:
+```bash
+pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+```
+
+### 3. Generate architecture figures (optional)
 
 ```bash
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+python generate_figures.py
 ```
 
 ## Core Contributions
@@ -55,13 +63,21 @@ pdflatex main.tex
 4. **Self-Healing DAG Execution** — Topological recovery from runtime failures
 5. **Reproducible Simulation** — Stochastic framework with IEEE-quality visualization
 
-## Experimental Results
+## Experimental Results (100 trials, 20 tasks/DAG)
 
-| Metric | XING | Static Baseline | Improvement |
-|--------|------|----------------|-------------|
-| RAI (constrained) | 0.0897 | 0.0682 | +31.4% |
-| GRE | 0.8149 | N/A | Self-healing |
-| CRL | 0.0181 | N/A | Minimal decay |
+| Metric | XING | Static Baseline | Role Baseline |
+|--------|------|----------------|--------------|
+| RAI (relaxed) | 7.50 | 0.22 | 0.44 |
+| RAI (constrained) | 7.28 | 0.10 | 0.26 |
+| RAI delta | -2.9% | -56.2% | -41.6% |
+| GRE | 0.67 | N/A (crashes) | N/A (crashes) |
+| CRL | 0.05 | N/A | N/A |
+
+Key findings:
+- **RAI**: XING maintains near-constant efficiency under infrastructure constraints (-2.9%), while static baselines collapse (-56.2%)
+- **GRE**: Self-healing DAG engine achieves 67% topological recovery rate under cascading failures
+- **CRL**: Semantic Memory Fabric maintains low context degradation (0.05) across long-horizon tasks
+- **Cost**: XING's edge-cloud balancing reduces costs by ~40x compared to cloud-only execution
 
 ## License
 
